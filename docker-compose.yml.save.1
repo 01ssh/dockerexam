@@ -1,0 +1,61 @@
+version: "3.9"
+
+services:
+  conteneur_api:
+    image: datascientest/fastapi:1.0.0
+    container_name: conteneur_api
+    ports:
+      - "8000:8000"
+    networks:
+      - my_network
+    environment:
+     LOG: 1
+       
+
+  conteneur_auth:
+    image: conteneur_ubuntu:lastest
+    container_name: conteneur_auth
+    environment:
+      ENV: ENV1
+    networks:
+      - my_network
+    depends_on:
+      - conteneur_api
+    volumes:
+      - /home/ubuntu/docker_exam:/app
+    command: bash -c "python3 script1.py && tail -f /dev/null"
+    environment:
+     LOG: 1 
+
+  conteneur_auto:
+    image: conteneur_ubuntu:lastest
+    container_name: conteneur_auto
+    environment:
+      ENV: ENV1
+    networks:
+      - my_network
+    depends_on:
+      - conteneur_auth
+    volumes:
+      - /home/ubuntu/docker_exam:/app
+    command: bash -c "python3 script2a.py  && tail -f /dev/null"
+    environment:
+     LOG: 1
+
+  conteneur_content:
+    image: conteneur_ubuntu:lastest
+    container_name: conteneur_content
+    environment:
+      ENV: ENV1
+    networks:
+      - my_network
+    depends_on:
+      - conteneur_auto
+    volumes:
+      - /home/ubuntu/docker_exam:/app
+    command: bash -c "python3 script3a.py  && tail -f /dev/null"
+    environment:
+     LOG: 1
+
+networks:
+  my_network:

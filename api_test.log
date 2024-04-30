@@ -1,0 +1,162 @@
+
+============================
+    Authentication test alice
+============================
+
+request done at "/permissions"
+| username="alice"
+| password="wonderland"
+
+expected result = 200
+actual result = 200
+
+==>  SUCCESS
+
+
+============================
+    Authentication test bob 1
+============================
+
+request done at "/permissions"
+| username="bob"
+| password="builder"
+
+expected result = 200
+actual result = 200
+
+==>  SUCCESS
+
+
+============================
+ Authentication test clementine 1
+============================
+
+request done at "/permissions"
+| username="clementine"
+| password="mandarine"
+
+expected result = 200
+actual result = 403
+
+==>  FAILURE
+
+
+============================
+ Authentication test alice 1
+============================
+
+request done at "/v1/sentiment"
+| username="alice"
+| password="wonderland"
+
+expected result = 200
+actual result = 200
+
+==>  SUCCESS
+
+
+============================
+ Authentication test bob 1
+============================
+
+request done at "/v1/sentiment"
+| username="bob"
+| password="builder"
+
+expected result = 200
+actual result = 200
+
+==>  SUCCESS
+
+
+============================
+ Authentication test bob 2
+============================
+
+request done at "/v2/sentiment"
+| username="bob"
+| password="builder"
+
+expected result = 200
+actual result = 403
+
+==>  FAILURE
+
+
+============================
+ Authentication test alice 2
+============================
+
+request done at "/v2/sentiment"
+| username="bob"
+| password="builder"
+
+expected result = 200
+actual result = 200
+
+==>  SUCCESS
+
+
+============================
+    Authentication test score  1
+============================
+expected result = 200
+actual result = 200
+==>  SUCCESS
+Score: 0.5994
+
+============================
+    Authentication test score 2
+============================ 
+expected result = 200
+actual result = 200
+==>  SUCCESS
+Score: -0.3612
+
+============================
+Authentication test score 3
+============================
+expected result = 200
+actual result = 200
+==>  SUCCESS
+Score: -0.3612
+
+============================
+    Authentication test score 4
+============================
+expected result = 200
+actual result = 200
+==>  SUCCESS
+Score: 0.5994
+
+============================
+    Authentication test score 5
+============================
+expected result = 200
+actual result = 403
+==>  FAILURE
+Score: None
+
+============================
+    Authentication test score 6
+============================
+expected result = 200
+actual result = 403
+==>  FAILURE
+Score: None
+
+============================
+    Authentication test score 6
+============================
+expected result = 200
+actual result = 200
+==>  SUCCESS
+Score: 0.5994
+
+============================
+    Authentication test score 7
+============================
+expected result = 200
+actual result = 200
+==>  SUCCESS
+Score: -0.3612

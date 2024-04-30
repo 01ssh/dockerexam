@@ -1,0 +1,48 @@
+services:
+  conteneur_api:
+    image: datascientest/fastapi:1.0.0
+    container_name: conteneur_api
+    ports:
+      - "8000:8000"
+    networks:
+      - my_network
+
+#  conteneur_auth:
+#    image: conteneur_ubuntu:lastest
+#    environment:
+#      ENV: ENV1
+#    command: python3 script1.py
+#    networks:
+#      - my_network
+#    depends_on:
+#      - conteneur_api
+#    volumes:
+#      - /home/ubuntu/docker_exam/api_test.log:/app/api_test.log
+#      - /home/ubuntu/docker_exam/script1.py:/app/script1.py
+
+  conteneur_auto:
+    image: conteneur_ubuntu:lastest
+    environment:
+      ENV: ENV1
+    command: python3 script2.py
+    networks:
+      - my_network
+#    depends_on:
+ #     - conteneur_auth
+    volumes:
+      - /home/ubuntu/docker_exam/api_test.log:/app/api_test.log
+      - /home/ubuntu/docker_exam/script2.py:/app/script2.py
+
+#  conteneur_content:
+#    image: conteneur_ubuntu:lastest
+#    environment:
+#      ENV: ENV1
+#    command: python3 script3.py
+#    networks:
+#      - my_network
+#    volumes:
+#      - /home/ubuntu/docker_exam/api_test.log:/app/api_test.log
+#      - /home/ubuntu/docker_exam/script3.py:/app/script3.py
+
+networks:
+  my_network:
